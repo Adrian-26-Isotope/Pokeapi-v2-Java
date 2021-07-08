@@ -3,269 +3,279 @@ package com.lodenrogue.pokeapiv2.model.pokemon;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.lodenrogue.pokeapiv2.model.APIResource;
 import com.lodenrogue.pokeapiv2.model.Description;
 import com.lodenrogue.pokeapiv2.model.Name;
 import com.lodenrogue.pokeapiv2.model.NamedAPIResource;
-import com.lodenrogue.pokeapiv2.model.evolution.EvolutionChain;
 
 /**
- * A Pokemon Species forms the basis for at least one pokemon. Attributes of a
- * Pokemon species are shared across all varieties of pokemon within the
- * species. A good example is Wormadam; Wormadam is the species which can be
- * found in three different varieties, Wormadam-Trash, Wormadam-Sandy and
- * Wormadam-Plant.
- * 
- * @author Miguel Hernandez
+ * A Pokemon Species forms the basis for at least one pokemon. Attributes of a Pokemon species are shared across all
+ * varieties of pokemon within the species. A good example is Wormadam; Wormadam is the species which can be found in
+ * three different varieties, Wormadam-Trash, Wormadam-Sandy and Wormadam-Plant.
  *
+ * @author Miguel Hernandez
  */
 public class PokemonSpecies {
-	private int id;
-	private String name;
-	private int order;
 
-	@JsonProperty("gender_rate")
-	private int genderRate;
+  @JsonProperty("base_happiness")
+  private int baseHappiness;
 
-	@JsonProperty("capture_rate")
-	private int captureRate;
+  @JsonProperty("capture_rate")
+  private int captureRate;
 
-	@JsonProperty("base_happiness")
-	private int baseHappiness;
+  private PokemonColor color;
 
-	@JsonProperty("is_baby")
-	private boolean isBaby;
+  @JsonProperty("egg_groups")
+  private List<NamedAPIResource> eggGroups;
 
-	@JsonProperty("hatch_counter")
-	private int hatchCounter;
+  @JsonProperty("evolution_chain")
+  private NamedAPIResource evolutionChain;
 
-	@JsonProperty("has_gender_differences")
-	private boolean hasGenderDifferences;
+  @JsonProperty("evolves_from_species")
+  private NamedAPIResource evolvesFromSpecies;
 
-	@JsonProperty("forms_switchable")
-	private boolean formsSwitchable;
+  @JsonProperty("form_descriptions")
+  private List<Description> formDescriptions;
 
-	@JsonProperty("growth_rate")
-	private NamedAPIResource growthRate;
+  @JsonProperty("forms_switchable")
+  private boolean formsSwitchable;
 
-	@JsonProperty("pokedex_numbers")
-	private List<PokemonSpeciesDexEntry> pokedexNumbers;
+  @JsonProperty("gender_rate")
+  private int genderRate;
 
-	@JsonProperty("egg_groups")
-	private List<NamedAPIResource> eggGroups;
+  private List<Genus> genera;
 
-	private PokemonColor color;
-	private PokemonShape shape;
+  private NamedAPIResource generation;
 
-	@JsonProperty("evolves_from_species")
-	private NamedAPIResource evolvesFromSpecies;
+  @JsonProperty("growth_rate")
+  private NamedAPIResource growthRate;
 
-	@JsonProperty("evolution_chain")
-	private APIResource<EvolutionChain> evolutionChain;
+  private NamedAPIResource habitat;
 
-	private NamedAPIResource habitat;
-	private NamedAPIResource generation;
-	private List<Name> names;
+  @JsonProperty("has_gender_differences")
+  private boolean hasGenderDifferences;
 
-	@JsonProperty("pal_park_encounters")
-	private List<PalParkEncounterArea> palParkEncounters;
+  @JsonProperty("hatch_counter")
+  private int hatchCounter;
 
-	@JsonProperty("form_descriptions")
-	private List<Description> formDescriptions;
+  private int id;
 
-	private Genus genera;
-	private List<NamedAPIResource> varieties;
+  @JsonProperty("is_baby")
+  private boolean isBaby;
 
-	public int getId() {
-		return id;
-	}
+  private String name;
 
-	public void setId(int id) {
-		this.id = id;
-	}
+  private List<Name> names;
 
-	public String getName() {
-		return name;
-	}
+  private int order;
 
-	public void setName(String name) {
-		this.name = name;
-	}
+  @JsonProperty("pal_park_encounters")
+  private List<PalParkEncounterArea> palParkEncounters;
 
-	public int getOrder() {
-		return order;
-	}
+  @JsonProperty("pokedex_numbers")
+  private List<PokemonSpeciesDexEntry> pokedexNumbers;
 
-	public void setOrder(int order) {
-		this.order = order;
-	}
+  private PokemonShape shape;
 
-	public int getGenderRate() {
-		return genderRate;
-	}
+  private List<NamedAPIResource> varieties;
 
-	public void setGenderRate(int genderRate) {
-		this.genderRate = genderRate;
-	}
+  /**********************************************************/
+  /************************ Getter **************************/
+  /**********************************************************/
 
-	public int getCaptureRate() {
-		return captureRate;
-	}
+  public int getBaseHappiness() {
+    return this.baseHappiness;
+  }
 
-	public void setCaptureRate(int captureRate) {
-		this.captureRate = captureRate;
-	}
+  public int getCaptureRate() {
+    return this.captureRate;
+  }
 
-	public int getBaseHappiness() {
-		return baseHappiness;
-	}
+  public PokemonColor getColor() {
+    return this.color;
+  }
 
-	public void setBaseHappiness(int baseHappiness) {
-		this.baseHappiness = baseHappiness;
-	}
-
-	public boolean isBaby() {
-		return isBaby;
-	}
-
-	public void setBaby(boolean isBaby) {
-		this.isBaby = isBaby;
-	}
-
-	public int getHatchCounter() {
-		return hatchCounter;
-	}
-
-	public void setHatchCounter(int hatchCounter) {
-		this.hatchCounter = hatchCounter;
-	}
-
-	public boolean isHasGenderDifferences() {
-		return hasGenderDifferences;
-	}
-
-	public void setHasGenderDifferences(boolean hasGenderDifferences) {
-		this.hasGenderDifferences = hasGenderDifferences;
-	}
-
-	public boolean isFormsSwitchable() {
-		return formsSwitchable;
-	}
-
-	public void setFormsSwitchable(boolean formsSwitchable) {
-		this.formsSwitchable = formsSwitchable;
-	}
-
-	public NamedAPIResource getGrowthRate() {
-		return growthRate;
-	}
-
-	public void setGrowthRate(NamedAPIResource growthRate) {
-		this.growthRate = growthRate;
-	}
-
-	public List<PokemonSpeciesDexEntry> getPokedexNumbers() {
-		return pokedexNumbers;
-	}
-
-	public void setPokedexNumbers(List<PokemonSpeciesDexEntry> pokedexNumbers) {
-		this.pokedexNumbers = pokedexNumbers;
-	}
-
-	public List<NamedAPIResource> getEggGroups() {
-		return eggGroups;
-	}
-
-	public void setEggGroups(List<NamedAPIResource> eggGroups) {
-		this.eggGroups = eggGroups;
-	}
-
-	public PokemonColor getColor() {
-		return color;
-	}
-
-	public void setColor(PokemonColor color) {
-		this.color = color;
-	}
-
-	public PokemonShape getShape() {
-		return shape;
-	}
-
-	public void setShape(PokemonShape shape) {
-		this.shape = shape;
-	}
-
-	public NamedAPIResource getEvolvesFromSpecies() {
-		return evolvesFromSpecies;
-	}
-
-	public void setEvolvesFromSpecies(NamedAPIResource evolvesFromSpecies) {
-		this.evolvesFromSpecies = evolvesFromSpecies;
-	}
-
-	public APIResource<EvolutionChain> getEvolutionChain() {
-		return evolutionChain;
-	}
-
-	public void setEvolutionChain(APIResource<EvolutionChain> evolutionChain) {
-		this.evolutionChain = evolutionChain;
-	}
-
-	public NamedAPIResource getHabitat() {
-		return habitat;
-	}
-
-	public void setHabitat(NamedAPIResource habitat) {
-		this.habitat = habitat;
-	}
-
-	public NamedAPIResource getGeneration() {
-		return generation;
-	}
-
-	public void setGeneration(NamedAPIResource generation) {
-		this.generation = generation;
-	}
-
-	public List<Name> getNames() {
-		return names;
-	}
-
-	public void setNames(List<Name> names) {
-		this.names = names;
-	}
-
-	public List<PalParkEncounterArea> getPalParkEncounters() {
-		return palParkEncounters;
-	}
-
-	public void setPalParkEncounters(List<PalParkEncounterArea> palParkEncounters) {
-		this.palParkEncounters = palParkEncounters;
-	}
-
-	public List<Description> getFormDescriptions() {
-		return formDescriptions;
-	}
-
-	public void setFormDescriptions(List<Description> formDescriptions) {
-		this.formDescriptions = formDescriptions;
-	}
-
-	public Genus getGenera() {
-		return genera;
-	}
-
-	public void setGenera(Genus genera) {
-		this.genera = genera;
-	}
-
-	public List<NamedAPIResource> getVarieties() {
-		return varieties;
-	}
-
-	public void setVarieties(List<NamedAPIResource> varieties) {
-		this.varieties = varieties;
-	}
+  public List<NamedAPIResource> getEggGroups() {
+    return this.eggGroups;
+  }
+
+  public NamedAPIResource getEvolutionChain() {
+    return this.evolutionChain;
+  }
+
+  public NamedAPIResource getEvolvesFromSpecies() {
+    return this.evolvesFromSpecies;
+  }
+
+  public List<Description> getFormDescriptions() {
+    return this.formDescriptions;
+  }
+
+  public int getGenderRate() {
+    return this.genderRate;
+  }
+
+  public List<Genus> getGenera() {
+    return this.genera;
+  }
+
+  public NamedAPIResource getGeneration() {
+    return this.generation;
+  }
+
+  public NamedAPIResource getGrowthRate() {
+    return this.growthRate;
+  }
+
+  public NamedAPIResource getHabitat() {
+    return this.habitat;
+  }
+
+  public int getHatchCounter() {
+    return this.hatchCounter;
+  }
+
+  public int getId() {
+    return this.id;
+  }
+
+  public String getName() {
+    return this.name;
+  }
+
+  public List<Name> getNames() {
+    return this.names;
+  }
+
+  public int getOrder() {
+    return this.order;
+  }
+
+  public List<PalParkEncounterArea> getPalParkEncounters() {
+    return this.palParkEncounters;
+  }
+
+  public List<PokemonSpeciesDexEntry> getPokedexNumbers() {
+    return this.pokedexNumbers;
+  }
+
+  public PokemonShape getShape() {
+    return this.shape;
+  }
+
+  public List<NamedAPIResource> getVarieties() {
+    return this.varieties;
+  }
+
+  public boolean isBaby() {
+    return this.isBaby;
+  }
+
+  public boolean isFormsSwitchable() {
+    return this.formsSwitchable;
+  }
+
+  public boolean isHasGenderDifferences() {
+    return this.hasGenderDifferences;
+  }
+
+  /**********************************************************/
+  /************************ Setter **************************/
+  /**********************************************************/
+
+  public void setBaby(final boolean isBaby) {
+    this.isBaby = isBaby;
+  }
+
+  public void setBaseHappiness(final int baseHappiness) {
+    this.baseHappiness = baseHappiness;
+  }
+
+  public void setCaptureRate(final int captureRate) {
+    this.captureRate = captureRate;
+  }
+
+  public void setColor(final PokemonColor color) {
+    this.color = color;
+  }
+
+  public void setEggGroups(final List<NamedAPIResource> eggGroups) {
+    this.eggGroups = eggGroups;
+  }
+
+  public void setEvolutionChain(final NamedAPIResource evolutionChain) {
+    this.evolutionChain = evolutionChain;
+  }
+
+  public void setEvolvesFromSpecies(final NamedAPIResource evolvesFromSpecies) {
+    this.evolvesFromSpecies = evolvesFromSpecies;
+  }
+
+  public void setFormDescriptions(final List<Description> formDescriptions) {
+    this.formDescriptions = formDescriptions;
+  }
+
+  public void setFormsSwitchable(final boolean formsSwitchable) {
+    this.formsSwitchable = formsSwitchable;
+  }
+
+  public void setGenderRate(final int genderRate) {
+    this.genderRate = genderRate;
+  }
+
+  public void setGenera(final List<Genus> genera) {
+    this.genera = genera;
+  }
+
+  public void setGeneration(final NamedAPIResource generation) {
+    this.generation = generation;
+  }
+
+  public void setGrowthRate(final NamedAPIResource growthRate) {
+    this.growthRate = growthRate;
+  }
+
+  public void setHabitat(final NamedAPIResource habitat) {
+    this.habitat = habitat;
+  }
+
+  public void setHasGenderDifferences(final boolean hasGenderDifferences) {
+    this.hasGenderDifferences = hasGenderDifferences;
+  }
+
+  public void setHatchCounter(final int hatchCounter) {
+    this.hatchCounter = hatchCounter;
+  }
+
+  public void setId(final int id) {
+    this.id = id;
+  }
+
+  public void setName(final String name) {
+    this.name = name;
+  }
+
+  public void setNames(final List<Name> names) {
+    this.names = names;
+  }
+
+  public void setOrder(final int order) {
+    this.order = order;
+  }
+
+  public void setPalParkEncounters(final List<PalParkEncounterArea> palParkEncounters) {
+    this.palParkEncounters = palParkEncounters;
+  }
+
+  public void setPokedexNumbers(final List<PokemonSpeciesDexEntry> pokedexNumbers) {
+    this.pokedexNumbers = pokedexNumbers;
+  }
+
+  public void setShape(final PokemonShape shape) {
+    this.shape = shape;
+  }
+
+  public void setVarieties(final List<NamedAPIResource> varieties) {
+    this.varieties = varieties;
+  }
 
 }
