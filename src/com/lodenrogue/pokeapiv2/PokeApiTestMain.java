@@ -49,6 +49,8 @@ public class PokeApiTestMain {
   private static void testEvolutionChain() {
     EvolutionChain evoChain = new EvolutionChainFacade().find(8);
     assert evoChain.getChain() != null;
+    assert evoChain.getChain().getEvolvesTo().get(0) != null;
+    assert evoChain.getChain().getEvolutionDetails().get(0) != null;
     System.out.println("evolution chain test passed");
   }
 
