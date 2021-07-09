@@ -10,52 +10,73 @@ import java.net.URLConnection;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.lodenrogue.pokeapiv2.model.APIResource;
+import com.lodenrogue.pokeapiv2.model.NamedAPIResource;
 
 public abstract class AbstractFacade<T> {
-	private Class<T> entityClass;
-	private ObjectMapper mapper;
 
-	public AbstractFacade(Class<T> entityClass) {
-		this.entityClass = entityClass;
-		mapper = new ObjectMapper();
-		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-	}
+  private Class<T> entityClass;
+  private ObjectMapper mapper;
 
-	/**
-	 * Find entity by an identifier.
-	 * 
-	 * @param id
-	 * @return
-	 */
-	public T find(Serializable id) {
-		try {
-			T t = find(new URL(getAddress() + "/" + id));
-			return t;
-		}
-		catch (MalformedURLException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
 
-	protected abstract String getAddress();
+  public AbstractFacade(final Class<T> entityClass) {
+    this.entityClass = entityClass;
+    this.mapper = new ObjectMapper();
+    this.mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+  }
 
-	private T find(URL url) {
-		try {
-			if (url != null) {
-				URLConnection conn = url.openConnection();
-				conn.setRequestProperty("User-Agent", "Mozilla/5.0");
-				BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+  protected abstract String getAddress();
 
-				T t = mapper.readValue(in, entityClass);
-				in.close();
-				return t;
-			}
-		}
-		catch (IOException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
+  /**
+   * Find entity by an identifier.
+   */
+  public T find(final Serializable id) {
+    return findByUrl(getAddress() + "/" + id);
+  }
+
+  /**
+   * Find entity by an ApiResource.
+   */
+  public T find(final APIResource apiResource) {
+    return findByUrl(apiResource.getUrl());
+  }
+
+  /**
+   * Find entity by an NamedApiResource.
+   */
+  public T find(final NamedAPIResource namedApiResource) {
+    return findByUrl(namedApiResource.getUrl());
+  }
+
+  /**
+   * Find entity by an url as String representation.
+   */
+  public T findByUrl(final String url) {
+    try {
+      return find(new URL(url));
+    }
+    catch (MalformedURLException e) {
+      e.printStackTrace();
+    }
+    return null;
+  }
+
+  private T find(final URL url) {
+    try {
+      if (url != null) {
+        URLConnection conn = url.openConnection();
+        conn.setRequestProperty("User-Agent", "Mozilla/5.0");
+        BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+        T t = this.mapper.readValue(in, this.entityClass);
+        in.close();
+        return t;
+      }
+    }
+    catch (IOException e) {
+      e.printStackTrace();
+    }
+    return null;
+  }
 
 }
