@@ -13,6 +13,8 @@ import com.lodenrogue.pokeapiv2.model.contests.ContestEffect;
 import com.lodenrogue.pokeapiv2.model.contests.ContestType;
 import com.lodenrogue.pokeapiv2.model.contests.SuperContestEffect;
 import com.lodenrogue.pokeapiv2.model.encounters.EncounterMethod;
+import com.lodenrogue.pokeapiv2.model.evolution.EvolutionChain;
+import com.lodenrogue.pokeapiv2.model.pokemon.Pokemon;
 import com.lodenrogue.pokeapiv2.model.pokemon.PokemonSpecies;
 import com.lodenrogue.pokeapiv2.model.utility.Language;
 import com.lodenrogue.pokeapiv2.service.berries.BerryFacade;
@@ -22,21 +24,47 @@ import com.lodenrogue.pokeapiv2.service.contests.ContestEffectFacade;
 import com.lodenrogue.pokeapiv2.service.contests.ContestTypeFacade;
 import com.lodenrogue.pokeapiv2.service.contests.SuperContestEffectFacade;
 import com.lodenrogue.pokeapiv2.service.encounter.EncounterMethodFacade;
+import com.lodenrogue.pokeapiv2.service.evolution.EvolutionChainFacade;
+import com.lodenrogue.pokeapiv2.service.pokemon.PokemonFacade;
 import com.lodenrogue.pokeapiv2.service.pokemon.PokemonSpeciesFacade;
 import com.lodenrogue.pokeapiv2.service.utility.LanguageFacade;
 
 public class PokeApiTestMain {
 
   public static void main(final String[] args) throws JsonParseException, JsonMappingException, IOException {
+    testEvolutionChain();
+    testPokemon();
     testPokemonSpecies();
+    testBerry();
+    testBerryFirmness();
+    testBerryFlavor();
+    testContestEffect();
+    testContestType();
+    testEncounterMethod();
+    testLanguage();
+    testPrimitiveArray();
+    testSuperContestEffect();
+  }
+
+  private static void testEvolutionChain() {
+    EvolutionChain evoChain = new EvolutionChainFacade().find(8);
+    assert evoChain.getChain() != null;
+    System.out.println("evolution chain test passed");
+  }
+
+  private static void testPokemon() {
+    Pokemon poke = new PokemonFacade().find(120);
+    assert poke.getName().equals("Staryu");
+    assert poke.getAbilities().size() == 3;
+    assert poke.getHeight() == 8;
+    System.out.println("pokemon test passed");
   }
 
   private static void testPokemonSpecies() {
     PokemonSpecies pokemonSpecies = new PokemonSpeciesFacade().find("ivysaur");
     assert pokemonSpecies.getId() == 2;
-    System.out.println(pokemonSpecies.getId());
-    System.out.println(pokemonSpecies.getName());
-    System.out.println(pokemonSpecies.getCaptureRate());
+    assert pokemonSpecies.getName().equals("ivysaur");
+    assert pokemonSpecies.getCaptureRate() == 44;
   }
 
   private static void testEncounterMethod() {

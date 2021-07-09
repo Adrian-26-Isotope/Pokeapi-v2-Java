@@ -4,33 +4,37 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lodenrogue.pokeapiv2.model.NamedAPIResource;
 
 public class PokemonAbility {
-	@JsonProperty("is_hidden")
-	private int isHidden;
-	private int slot;
-	private NamedAPIResource ability;
 
-	public int getIsHidden() {
-		return isHidden;
-	}
+  private NamedAPIResource ability;
 
-	public void setIsHidden(int isHidden) {
-		this.isHidden = isHidden;
-	}
+  @JsonProperty("is_hidden")
+  private boolean isHidden;
 
-	public int getSlot() {
-		return slot;
-	}
+  private int slot;
 
-	public void setSlot(int slot) {
-		this.slot = slot;
-	}
 
-	public NamedAPIResource getAbility() {
-		return ability;
-	}
+  public NamedAPIResource getAbility() {
+    return this.ability;
+  }
 
-	public void setAbility(NamedAPIResource ability) {
-		this.ability = ability;
-	}
+  public boolean getIsHidden() {
+    return this.isHidden;
+  }
+
+  public int getSlot() {
+    return this.slot;
+  }
+
+  public void setAbility(final NamedAPIResource ability) {
+    this.ability = ability;
+  }
+
+  public void setIsHidden(final boolean isHidden) {
+    this.isHidden = isHidden;
+  }
+
+  public void setSlot(final int slot) {
+    this.slot = slot;
+  }
 
 }

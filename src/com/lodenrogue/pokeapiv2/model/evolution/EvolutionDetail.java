@@ -1,174 +1,205 @@
 package com.lodenrogue.pokeapiv2.model.evolution;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lodenrogue.pokeapiv2.model.NamedAPIResource;
 
 /**
- * 
  * @author Miguel Hernandez
- *
  */
 public class EvolutionDetail {
-	private NamedAPIResource item;
-	private NamedAPIResource trigger;
-	private NamedAPIResource gender;
-	private NamedAPIResource heldItem;
-	private NamedAPIResource knownMove;
-	private NamedAPIResource knownMoveType;
-	private NamedAPIResource location;
-	private int minLevel;
-	private int minHappiness;
-	private int minBeauty;
-	private int minAffection;
-	private boolean needsOverworldRain;
-	private NamedAPIResource partySpecies;
-	private NamedAPIResource partyType;
-	private int relativePhysicalStats;
-	private String timeOfDay;
-	private NamedAPIResource tradeSpecies;
-	private boolean turnUpsideDown;
 
-	public NamedAPIResource getItem() {
-		return item;
-	}
+  private NamedAPIResource gender;
 
-	public void setItem(NamedAPIResource item) {
-		this.item = item;
-	}
+  @JsonProperty("held_item")
+  private NamedAPIResource heldItem;
 
-	public NamedAPIResource getTrigger() {
-		return trigger;
-	}
+  private NamedAPIResource item;
 
-	public void setTrigger(NamedAPIResource trigger) {
-		this.trigger = trigger;
-	}
+  @JsonProperty("known_move")
+  private NamedAPIResource knownMove;
 
-	public NamedAPIResource getGender() {
-		return gender;
-	}
+  @JsonProperty("known_move_type")
+  private NamedAPIResource knownMoveType;
 
-	public void setGender(NamedAPIResource gender) {
-		this.gender = gender;
-	}
+  private NamedAPIResource location;
+  @JsonProperty("min_affection")
+  private int minAffection;
 
-	public NamedAPIResource getHeldItem() {
-		return heldItem;
-	}
+  @JsonProperty("min_beauty")
+  private int minBeauty;
 
-	public void setHeldItem(NamedAPIResource heldItem) {
-		this.heldItem = heldItem;
-	}
+  @JsonProperty("min_happiness")
+  private int minHappiness;
 
-	public NamedAPIResource getKnownMove() {
-		return knownMove;
-	}
+  @JsonProperty("min_level")
+  private int minLevel;
 
-	public void setKnownMove(NamedAPIResource knownMove) {
-		this.knownMove = knownMove;
-	}
+  @JsonProperty("needs_overworld_rain")
+  private boolean needsOverworldRain;
 
-	public NamedAPIResource getKnownMoveType() {
-		return knownMoveType;
-	}
+  @JsonProperty("party_species")
+  private NamedAPIResource partySpecies;
 
-	public void setKnownMoveType(NamedAPIResource knownMoveType) {
-		this.knownMoveType = knownMoveType;
-	}
+  @JsonProperty("party_type")
+  private NamedAPIResource partyType;
 
-	public NamedAPIResource getLocation() {
-		return location;
-	}
+  @JsonProperty("relative_physical_stats")
+  private NamedAPIResource relativePhysicalStats;
 
-	public void setLocation(NamedAPIResource location) {
-		this.location = location;
-	}
+  @JsonProperty("time_of_day")
+  private String timeOfDay;
 
-	public int getMinLevel() {
-		return minLevel;
-	}
+  @JsonProperty("trade_species")
+  private NamedAPIResource tradeSpecies;
 
-	public void setMinLevel(int minLevel) {
-		this.minLevel = minLevel;
-	}
+  private NamedAPIResource trigger;
 
-	public int getMinHappiness() {
-		return minHappiness;
-	}
+  @JsonProperty("turn_upside_down")
+  private boolean turnUpsideDown;
 
-	public void setMinHappiness(int minHappiness) {
-		this.minHappiness = minHappiness;
-	}
 
-	public int getMinBeauty() {
-		return minBeauty;
-	}
+  public NamedAPIResource getGender() {
+    return this.gender;
+  }
 
-	public void setMinBeauty(int minBeauty) {
-		this.minBeauty = minBeauty;
-	}
+  public NamedAPIResource getHeldItem() {
+    return this.heldItem;
+  }
 
-	public int getMinAffection() {
-		return minAffection;
-	}
+  public NamedAPIResource getItem() {
+    return this.item;
+  }
 
-	public void setMinAffection(int minAffection) {
-		this.minAffection = minAffection;
-	}
+  public NamedAPIResource getKnownMove() {
+    return this.knownMove;
+  }
 
-	public boolean isNeedsOverworldRain() {
-		return needsOverworldRain;
-	}
+  public NamedAPIResource getKnownMoveType() {
+    return this.knownMoveType;
+  }
 
-	public void setNeedsOverworldRain(boolean needsOverworldRain) {
-		this.needsOverworldRain = needsOverworldRain;
-	}
+  public NamedAPIResource getLocation() {
+    return this.location;
+  }
 
-	public NamedAPIResource getPartySpecies() {
-		return partySpecies;
-	}
+  public int getMinAffection() {
+    return this.minAffection;
+  }
 
-	public void setPartySpecies(NamedAPIResource partySpecies) {
-		this.partySpecies = partySpecies;
-	}
+  public int getMinBeauty() {
+    return this.minBeauty;
+  }
 
-	public NamedAPIResource getPartyType() {
-		return partyType;
-	}
+  public int getMinHappiness() {
+    return this.minHappiness;
+  }
 
-	public void setPartyType(NamedAPIResource partyType) {
-		this.partyType = partyType;
-	}
+  public int getMinLevel() {
+    return this.minLevel;
+  }
 
-	public int getRelativePhysicalStats() {
-		return relativePhysicalStats;
-	}
+  public NamedAPIResource getPartySpecies() {
+    return this.partySpecies;
+  }
 
-	public void setRelativePhysicalStats(int relativePhysicalStats) {
-		this.relativePhysicalStats = relativePhysicalStats;
-	}
+  public NamedAPIResource getPartyType() {
+    return this.partyType;
+  }
 
-	public String getTimeOfDay() {
-		return timeOfDay;
-	}
+  public NamedAPIResource getRelativePhysicalStats() {
+    return this.relativePhysicalStats;
+  }
 
-	public void setTimeOfDay(String timeOfDay) {
-		this.timeOfDay = timeOfDay;
-	}
+  public String getTimeOfDay() {
+    return this.timeOfDay;
+  }
 
-	public NamedAPIResource getTradeSpecies() {
-		return tradeSpecies;
-	}
+  public NamedAPIResource getTradeSpecies() {
+    return this.tradeSpecies;
+  }
 
-	public void setTradeSpecies(NamedAPIResource tradeSpecies) {
-		this.tradeSpecies = tradeSpecies;
-	}
+  public NamedAPIResource getTrigger() {
+    return this.trigger;
+  }
 
-	public boolean isTurnUpsideDown() {
-		return turnUpsideDown;
-	}
+  public boolean isNeedsOverworldRain() {
+    return this.needsOverworldRain;
+  }
 
-	public void setTurnUpsideDown(boolean turnUpsideDown) {
-		this.turnUpsideDown = turnUpsideDown;
-	}
+  public boolean isTurnUpsideDown() {
+    return this.turnUpsideDown;
+  }
+
+  public void setGender(final NamedAPIResource gender) {
+    this.gender = gender;
+  }
+
+  public void setHeldItem(final NamedAPIResource heldItem) {
+    this.heldItem = heldItem;
+  }
+
+  public void setItem(final NamedAPIResource item) {
+    this.item = item;
+  }
+
+  public void setKnownMove(final NamedAPIResource knownMove) {
+    this.knownMove = knownMove;
+  }
+
+  public void setKnownMoveType(final NamedAPIResource knownMoveType) {
+    this.knownMoveType = knownMoveType;
+  }
+
+  public void setLocation(final NamedAPIResource location) {
+    this.location = location;
+  }
+
+  public void setMinAffection(final int minAffection) {
+    this.minAffection = minAffection;
+  }
+
+  public void setMinBeauty(final int minBeauty) {
+    this.minBeauty = minBeauty;
+  }
+
+  public void setMinHappiness(final int minHappiness) {
+    this.minHappiness = minHappiness;
+  }
+
+  public void setMinLevel(final int minLevel) {
+    this.minLevel = minLevel;
+  }
+
+  public void setNeedsOverworldRain(final boolean needsOverworldRain) {
+    this.needsOverworldRain = needsOverworldRain;
+  }
+
+  public void setPartySpecies(final NamedAPIResource partySpecies) {
+    this.partySpecies = partySpecies;
+  }
+
+  public void setPartyType(final NamedAPIResource partyType) {
+    this.partyType = partyType;
+  }
+
+  public void setRelativePhysicalStats(final NamedAPIResource relativePhysicalStats) {
+    this.relativePhysicalStats = relativePhysicalStats;
+  }
+
+  public void setTimeOfDay(final String timeOfDay) {
+    this.timeOfDay = timeOfDay;
+  }
+
+  public void setTradeSpecies(final NamedAPIResource tradeSpecies) {
+    this.tradeSpecies = tradeSpecies;
+  }
+
+  public void setTrigger(final NamedAPIResource trigger) {
+    this.trigger = trigger;
+  }
+
+  public void setTurnUpsideDown(final boolean turnUpsideDown) {
+    this.turnUpsideDown = turnUpsideDown;
+  }
 
 }

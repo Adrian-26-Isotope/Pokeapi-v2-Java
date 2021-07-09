@@ -1,23 +1,28 @@
 package com.lodenrogue.pokeapiv2.model.pokemon;
 
+import com.lodenrogue.pokeapiv2.model.NamedAPIResource;
+
 public class PokemonType {
-	private int slot;
-	private String type;
 
-	public int getSlot() {
-		return slot;
-	}
+  private int slot;
 
-	public void setSlot(int slot) {
-		this.slot = slot;
-	}
+  private NamedAPIResource type;
 
-	public String getType() {
-		return type;
-	}
 
-	public void setType(String type) {
-		this.type = type;
-	}
+  public int getSlot() {
+    return this.slot;
+  }
+
+  public void setSlot(final int slot) {
+    this.slot = slot;
+  }
+
+  public NamedAPIResource getType() {
+    return this.type;
+  }
+
+  public void setType(final NamedAPIResource type) {
+    this.type = type;
+  }
 
 }

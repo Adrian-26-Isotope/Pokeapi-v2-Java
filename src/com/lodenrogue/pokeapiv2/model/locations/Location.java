@@ -3,74 +3,76 @@ package com.lodenrogue.pokeapiv2.model.locations;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.lodenrogue.pokeapiv2.model.APIResource;
 import com.lodenrogue.pokeapiv2.model.GenerationGameIndex;
 import com.lodenrogue.pokeapiv2.model.Name;
 import com.lodenrogue.pokeapiv2.model.NamedAPIResource;
 
 /**
- * Locations that can be visited within the games. Locations make up sizable
- * portions of regions, like cities or routes.
- * 
- * @author Miguel Hernandez
+ * Locations that can be visited within the games. Locations make up sizable portions of regions, like cities or routes.
  *
+ * @author Miguel Hernandez
  */
 public class Location {
-	private int id;
-	private String name;
-	private NamedAPIResource region;
-	private List<Name> names;
 
-	@JsonProperty("game_indices")
-	private List<GenerationGameIndex> gameIndices;
-	private List<APIResource<LocationArea>> areas;
+  private int id;
 
-	public int getId() {
-		return id;
-	}
+  private String name;
 
-	public void setId(int id) {
-		this.id = id;
-	}
+  private NamedAPIResource region;
 
-	public String getName() {
-		return name;
-	}
+  private List<Name> names;
 
-	public void setName(String name) {
-		this.name = name;
-	}
+  @JsonProperty("game_indices")
+  private List<GenerationGameIndex> gameIndices;
 
-	public NamedAPIResource getRegion() {
-		return region;
-	}
+  private List<NamedAPIResource> areas;
 
-	public void setRegion(NamedAPIResource region) {
-		this.region = region;
-	}
+  public int getId() {
+    return this.id;
+  }
 
-	public List<Name> getNames() {
-		return names;
-	}
+  public void setId(final int id) {
+    this.id = id;
+  }
 
-	public void setNames(List<Name> names) {
-		this.names = names;
-	}
+  public String getName() {
+    return this.name;
+  }
 
-	public List<GenerationGameIndex> getGameIndices() {
-		return gameIndices;
-	}
+  public void setName(final String name) {
+    this.name = name;
+  }
 
-	public void setGameIndices(List<GenerationGameIndex> gameIndices) {
-		this.gameIndices = gameIndices;
-	}
+  public NamedAPIResource getRegion() {
+    return this.region;
+  }
 
-	public List<APIResource<LocationArea>> getAreas() {
-		return areas;
-	}
+  public void setRegion(final NamedAPIResource region) {
+    this.region = region;
+  }
 
-	public void setAreas(List<APIResource<LocationArea>> areas) {
-		this.areas = areas;
-	}
+  public List<Name> getNames() {
+    return this.names;
+  }
+
+  public void setNames(final List<Name> names) {
+    this.names = names;
+  }
+
+  public List<GenerationGameIndex> getGameIndices() {
+    return this.gameIndices;
+  }
+
+  public void setGameIndices(final List<GenerationGameIndex> gameIndices) {
+    this.gameIndices = gameIndices;
+  }
+
+  public List<NamedAPIResource> getAreas() {
+    return this.areas;
+  }
+
+  public void setAreas(final List<NamedAPIResource> areas) {
+    this.areas = areas;
+  }
 
 }

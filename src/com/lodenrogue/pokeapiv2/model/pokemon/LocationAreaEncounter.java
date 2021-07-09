@@ -3,31 +3,31 @@ package com.lodenrogue.pokeapiv2.model.pokemon;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.lodenrogue.pokeapiv2.model.APIResource;
+import com.lodenrogue.pokeapiv2.model.NamedAPIResource;
 import com.lodenrogue.pokeapiv2.model.VersionEncounterDetail;
-import com.lodenrogue.pokeapiv2.model.locations.LocationArea;
 
 public class LocationAreaEncounter {
-	@JsonProperty("location_area")
-	private APIResource<LocationArea> locationArea;
 
-	@JsonProperty("version_details")
-	private List<VersionEncounterDetail> versionDetails;
+  @JsonProperty("location_area")
+  private NamedAPIResource locationArea;
 
-	public APIResource<LocationArea> getLocationArea() {
-		return locationArea;
-	}
+  @JsonProperty("version_details")
+  private List<VersionEncounterDetail> versionDetails;
 
-	public void setLocationArea(APIResource<LocationArea> locationArea) {
-		this.locationArea = locationArea;
-	}
+  public NamedAPIResource getLocationArea() {
+    return this.locationArea;
+  }
 
-	public List<VersionEncounterDetail> getVersionDetails() {
-		return versionDetails;
-	}
+  public void setLocationArea(final NamedAPIResource locationArea) {
+    this.locationArea = locationArea;
+  }
 
-	public void setVersionDetails(List<VersionEncounterDetail> versionDetails) {
-		this.versionDetails = versionDetails;
-	}
+  public List<VersionEncounterDetail> getVersionDetails() {
+    return this.versionDetails;
+  }
+
+  public void setVersionDetails(final List<VersionEncounterDetail> versionDetails) {
+    this.versionDetails = versionDetails;
+  }
 
 }

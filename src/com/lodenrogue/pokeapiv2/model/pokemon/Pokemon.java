@@ -7,169 +7,177 @@ import com.lodenrogue.pokeapiv2.model.NamedAPIResource;
 import com.lodenrogue.pokeapiv2.model.VersionGameIndex;
 
 /**
- * Pokemon are the creatures that inhabit the world of the pokemon games. They
- * can be caught using pokeball's and trained by battling with other pokemon.
- * 
- * @author Miguel Hernandez
+ * Pokemon are the creatures that inhabit the world of the pokemon games. They can be caught using pokeball's and
+ * trained by battling with other pokemon.
  *
+ * @author Miguel Hernandez
  */
 public class Pokemon {
-	private int id;
-	private String name;
 
-	@JsonProperty("base_experience")
-	private int baseExperience;
+  private List<PokemonAbility> abilities;
 
-	private int height;
+  @JsonProperty("base_experience")
+  private int baseExperience;
 
-	@JsonProperty("is_default")
-	private boolean isDefault;
+  private List<NamedAPIResource> forms;
 
-	private int order;
-	private int weight;
-	private List<PokemonAbility> abilities;
-	private List<NamedAPIResource> forms;
+  @JsonProperty("game_indices")
+  private List<VersionGameIndex> gameIndices;
 
-	@JsonProperty("game_indices")
-	private List<VersionGameIndex> gameIndices;
+  private int height;
 
-	@JsonProperty("held_items")
-	private List<NamedAPIResource> heldItems;
+  @JsonProperty("held_items")
+  private List<NamedAPIResource> heldItems;
 
-	@JsonProperty("location_area_encounters")
-	private List<LocationAreaEncounter> locationAreaEncounters;
+  private int id;
 
-	private List<NamedAPIResource> moves;
-	private List<NamedAPIResource> species;
-	private List<NamedAPIResource> stats;
-	private List<PokemonType> types;
+  @JsonProperty("is_default")
+  private boolean isDefault;
 
-	public int getId() {
-		return id;
-	}
+  @JsonProperty("location_area_encounters")
+  private String locationAreaEncounters;
 
-	public void setId(int id) {
-		this.id = id;
-	}
+  private List<NamedAPIResource> moves;
 
-	public String getName() {
-		return name;
-	}
+  private String name;
 
-	public void setName(String name) {
-		this.name = name;
-	}
+  private int order;
 
-	public int getBaseExperience() {
-		return baseExperience;
-	}
+  private NamedAPIResource species;
 
-	public void setBaseExperience(int baseExperience) {
-		this.baseExperience = baseExperience;
-	}
+  private List<PokemonStat> stats;
 
-	public int getHeight() {
-		return height;
-	}
+  private List<PokemonType> types;
 
-	public void setHeight(int height) {
-		this.height = height;
-	}
+  private int weight;
 
-	public boolean isDefault() {
-		return isDefault;
-	}
 
-	public void setDefault(boolean isDefault) {
-		this.isDefault = isDefault;
-	}
+  public List<PokemonAbility> getAbilities() {
+    return this.abilities;
+  }
 
-	public int getOrder() {
-		return order;
-	}
+  public int getBaseExperience() {
+    return this.baseExperience;
+  }
 
-	public void setOrder(int order) {
-		this.order = order;
-	}
+  public List<NamedAPIResource> getForms() {
+    return this.forms;
+  }
 
-	public int getWeight() {
-		return weight;
-	}
+  public List<VersionGameIndex> getGameIndices() {
+    return this.gameIndices;
+  }
 
-	public void setWeight(int weight) {
-		this.weight = weight;
-	}
+  public int getHeight() {
+    return this.height;
+  }
 
-	public List<PokemonAbility> getAbilities() {
-		return abilities;
-	}
+  public List<NamedAPIResource> getHeldItems() {
+    return this.heldItems;
+  }
 
-	public void setAbilities(List<PokemonAbility> abilities) {
-		this.abilities = abilities;
-	}
+  public int getId() {
+    return this.id;
+  }
 
-	public List<NamedAPIResource> getForms() {
-		return forms;
-	}
+  public String getLocationAreaEncounters() {
+    return this.locationAreaEncounters;
+  }
 
-	public void setForms(List<NamedAPIResource> forms) {
-		this.forms = forms;
-	}
+  public List<NamedAPIResource> getMoves() {
+    return this.moves;
+  }
 
-	public List<VersionGameIndex> getGameIndices() {
-		return gameIndices;
-	}
+  public String getName() {
+    return this.name;
+  }
 
-	public void setGameIndices(List<VersionGameIndex> gameIndices) {
-		this.gameIndices = gameIndices;
-	}
+  public int getOrder() {
+    return this.order;
+  }
 
-	public List<NamedAPIResource> getHeldItems() {
-		return heldItems;
-	}
+  public NamedAPIResource getSpecies() {
+    return this.species;
+  }
 
-	public void setHeldItems(List<NamedAPIResource> heldItems) {
-		this.heldItems = heldItems;
-	}
+  public List<PokemonStat> getStats() {
+    return this.stats;
+  }
 
-	public List<LocationAreaEncounter> getLocationAreaEncounters() {
-		return locationAreaEncounters;
-	}
+  public List<PokemonType> getTypes() {
+    return this.types;
+  }
 
-	public void setLocationAreaEncounters(List<LocationAreaEncounter> locationAreaEncounters) {
-		this.locationAreaEncounters = locationAreaEncounters;
-	}
+  public int getWeight() {
+    return this.weight;
+  }
 
-	public List<NamedAPIResource> getMoves() {
-		return moves;
-	}
+  public boolean isDefault() {
+    return this.isDefault;
+  }
 
-	public void setMoves(List<NamedAPIResource> moves) {
-		this.moves = moves;
-	}
+  public void setAbilities(final List<PokemonAbility> abilities) {
+    this.abilities = abilities;
+  }
 
-	public List<NamedAPIResource> getSpecies() {
-		return species;
-	}
+  public void setBaseExperience(final int baseExperience) {
+    this.baseExperience = baseExperience;
+  }
 
-	public void setSpecies(List<NamedAPIResource> species) {
-		this.species = species;
-	}
+  public void setDefault(final boolean isDefault) {
+    this.isDefault = isDefault;
+  }
 
-	public List<NamedAPIResource> getStats() {
-		return stats;
-	}
+  public void setForms(final List<NamedAPIResource> forms) {
+    this.forms = forms;
+  }
 
-	public void setStats(List<NamedAPIResource> stats) {
-		this.stats = stats;
-	}
+  public void setGameIndices(final List<VersionGameIndex> gameIndices) {
+    this.gameIndices = gameIndices;
+  }
 
-	public List<PokemonType> getTypes() {
-		return types;
-	}
+  public void setHeight(final int height) {
+    this.height = height;
+  }
 
-	public void setTypes(List<PokemonType> types) {
-		this.types = types;
-	}
+  public void setHeldItems(final List<NamedAPIResource> heldItems) {
+    this.heldItems = heldItems;
+  }
+
+  public void setId(final int id) {
+    this.id = id;
+  }
+
+  public void setLocationAreaEncounters(final String locationAreaEncounters) {
+    this.locationAreaEncounters = locationAreaEncounters;
+  }
+
+  public void setMoves(final List<NamedAPIResource> moves) {
+    this.moves = moves;
+  }
+
+  public void setName(final String name) {
+    this.name = name;
+  }
+
+  public void setOrder(final int order) {
+    this.order = order;
+  }
+
+  public void setSpecies(final NamedAPIResource species) {
+    this.species = species;
+  }
+
+  public void setStats(final List<PokemonStat> stats) {
+    this.stats = stats;
+  }
+
+  public void setTypes(final List<PokemonType> types) {
+    this.types = types;
+  }
+
+  public void setWeight(final int weight) {
+    this.weight = weight;
+  }
 
 }

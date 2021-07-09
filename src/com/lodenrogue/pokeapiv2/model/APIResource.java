@@ -1,23 +1,16 @@
 package com.lodenrogue.pokeapiv2.model;
 
-public class APIResource<T> {
-	private Class<T> entityClass;
-	private String url;
+public class APIResource {
 
-	public APIResource(Class<T> entityClass) {
-		this.entityClass = entityClass;
-	}
+  private String url;
 
-	public String getUrl() {
-		return url;
-	}
 
-	public void setUrl(String url) {
-		this.url = url;
-	}
+  public String getUrl() {
+    return this.url;
+  }
 
-	public Class<T> getEntityClass() {
-		return entityClass;
-	}
+  public void setUrl(final String url) {
+    this.url = url;
+  }
 
 }
