@@ -1,6 +1,4 @@
-/*
- * Copyright (c) Robert Bosch GmbH. All rights reserved.
- */
+
 package com.lodenrogue.pokeapiv2.service.pokemon;
 
 import com.lodenrogue.pokeapiv2.model.pokemon.PokemonSpecies;
