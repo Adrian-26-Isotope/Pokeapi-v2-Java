@@ -3,9 +3,8 @@ package com.lodenrogue.pokeapiv2;
 import java.io.IOException;
 import java.util.Arrays;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.lodenrogue.pokeapiv2.model.APIResource;
 import com.lodenrogue.pokeapiv2.model.berries.Berry;
 import com.lodenrogue.pokeapiv2.model.berries.BerryFirmness;
 import com.lodenrogue.pokeapiv2.model.berries.BerryFlavor;
@@ -29,9 +28,12 @@ import com.lodenrogue.pokeapiv2.service.pokemon.PokemonFacade;
 import com.lodenrogue.pokeapiv2.service.pokemon.PokemonSpeciesFacade;
 import com.lodenrogue.pokeapiv2.service.utility.LanguageFacade;
 
+/**
+ * Enable assertions (-ea) for a correct result.
+ */
 public class PokeApiTestMain {
 
-  public static void main(final String[] args) throws JsonParseException, JsonMappingException, IOException {
+  public static void main(final String[] args) {
     testEvolutionChain();
     testPokemon();
     testPokemonSpecies();
@@ -50,13 +52,13 @@ public class PokeApiTestMain {
     EvolutionChain evoChain = new EvolutionChainFacade().find(8);
     assert evoChain.getChain() != null;
     assert evoChain.getChain().getEvolvesTo().get(0) != null;
-    assert evoChain.getChain().getEvolutionDetails().get(0) != null;
+    assert evoChain.getChain().getEvolutionDetails().isEmpty();
     System.out.println("evolution chain test passed");
   }
 
   private static void testPokemon() {
     Pokemon poke = new PokemonFacade().find(120);
-    assert poke.getName().equals("Staryu");
+    assert poke.getName().equals("staryu");
     assert poke.getAbilities().size() == 3;
     assert poke.getHeight() == 8;
     System.out.println("pokemon test passed");
@@ -66,7 +68,11 @@ public class PokeApiTestMain {
     PokemonSpecies pokemonSpecies = new PokemonSpeciesFacade().find("ivysaur");
     assert pokemonSpecies.getId() == 2;
     assert pokemonSpecies.getName().equals("ivysaur");
-    assert pokemonSpecies.getCaptureRate() == 44;
+    assert pokemonSpecies.getCaptureRate() == 45;
+    APIResource evolutionChain = pokemonSpecies.getEvolutionChain();
+    EvolutionChain evoChain = new EvolutionChainFacade().find(evolutionChain);
+    assert evoChain != null;
+    System.out.println("pokemon species test passed");
   }
 
   private static void testEncounterMethod() {
@@ -119,7 +125,6 @@ public class PokeApiTestMain {
       System.out.println(Arrays.toString(test.getPossibleValues()));
     }
     catch (IOException e) {
-      // TODO Auto-generated catch block
       e.printStackTrace();
     }
   }
