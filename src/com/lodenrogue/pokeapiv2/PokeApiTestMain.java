@@ -3,9 +3,8 @@ package com.lodenrogue.pokeapiv2;
 import java.io.IOException;
 import java.util.Arrays;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.lodenrogue.pokeapiv2.model.APIResource;
 import com.lodenrogue.pokeapiv2.model.berries.Berry;
 import com.lodenrogue.pokeapiv2.model.berries.BerryFirmness;
 import com.lodenrogue.pokeapiv2.model.berries.BerryFlavor;
@@ -13,6 +12,8 @@ import com.lodenrogue.pokeapiv2.model.contests.ContestEffect;
 import com.lodenrogue.pokeapiv2.model.contests.ContestType;
 import com.lodenrogue.pokeapiv2.model.contests.SuperContestEffect;
 import com.lodenrogue.pokeapiv2.model.encounters.EncounterMethod;
+import com.lodenrogue.pokeapiv2.model.evolution.EvolutionChain;
+import com.lodenrogue.pokeapiv2.model.pokemon.Pokemon;
 import com.lodenrogue.pokeapiv2.model.pokemon.PokemonSpecies;
 import com.lodenrogue.pokeapiv2.model.utility.Language;
 import com.lodenrogue.pokeapiv2.service.berries.BerryFacade;
@@ -22,21 +23,56 @@ import com.lodenrogue.pokeapiv2.service.contests.ContestEffectFacade;
 import com.lodenrogue.pokeapiv2.service.contests.ContestTypeFacade;
 import com.lodenrogue.pokeapiv2.service.contests.SuperContestEffectFacade;
 import com.lodenrogue.pokeapiv2.service.encounter.EncounterMethodFacade;
+import com.lodenrogue.pokeapiv2.service.evolution.EvolutionChainFacade;
+import com.lodenrogue.pokeapiv2.service.pokemon.PokemonFacade;
 import com.lodenrogue.pokeapiv2.service.pokemon.PokemonSpeciesFacade;
 import com.lodenrogue.pokeapiv2.service.utility.LanguageFacade;
 
+/**
+ * Enable assertions (-ea) for a correct result.
+ */
 public class PokeApiTestMain {
 
-  public static void main(final String[] args) throws JsonParseException, JsonMappingException, IOException {
+  public static void main(final String[] args) {
+    testEvolutionChain();
+    testPokemon();
     testPokemonSpecies();
+    testBerry();
+    testBerryFirmness();
+    testBerryFlavor();
+    testContestEffect();
+    testContestType();
+    testEncounterMethod();
+    testLanguage();
+    testPrimitiveArray();
+    testSuperContestEffect();
+  }
+
+  private static void testEvolutionChain() {
+    EvolutionChain evoChain = new EvolutionChainFacade().find(8);
+    assert evoChain.getChain() != null;
+    assert evoChain.getChain().getEvolvesTo().get(0) != null;
+    assert evoChain.getChain().getEvolutionDetails().isEmpty();
+    System.out.println("evolution chain test passed");
+  }
+
+  private static void testPokemon() {
+    Pokemon poke = new PokemonFacade().find(120);
+    assert poke.getName().equals("staryu");
+    assert poke.getAbilities().size() == 3;
+    assert poke.getHeight() == 8;
+    System.out.println("pokemon test passed");
   }
 
   private static void testPokemonSpecies() {
     PokemonSpecies pokemonSpecies = new PokemonSpeciesFacade().find("ivysaur");
     assert pokemonSpecies.getId() == 2;
-    System.out.println(pokemonSpecies.getId());
-    System.out.println(pokemonSpecies.getName());
-    System.out.println(pokemonSpecies.getCaptureRate());
+    assert pokemonSpecies.getName().equals("ivysaur");
+    assert pokemonSpecies.getCaptureRate() == 45;
+    APIResource evolutionChain = pokemonSpecies.getEvolutionChain();
+    EvolutionChain evoChain = new EvolutionChainFacade().find(evolutionChain);
+    assert evoChain != null;
+    System.out.println("pokemon species test passed");
   }
 
   private static void testEncounterMethod() {
@@ -89,7 +125,6 @@ public class PokeApiTestMain {
       System.out.println(Arrays.toString(test.getPossibleValues()));
     }
     catch (IOException e) {
-      // TODO Auto-generated catch block
       e.printStackTrace();
     }
   }

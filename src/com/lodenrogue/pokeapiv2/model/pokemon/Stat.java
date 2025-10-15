@@ -8,98 +8,99 @@ import com.lodenrogue.pokeapiv2.model.Name;
 import com.lodenrogue.pokeapiv2.model.NamedAPIResource;
 
 public class Stat {
-	private int id;
-	private String name;
 
-	@JsonProperty("game_index")
-	private int gameIndex;
+  private int id;
+  private String name;
 
-	@JsonProperty("is_battle_only")
-	private boolean isBattleOnly;
+  @JsonProperty("game_index")
+  private int gameIndex;
 
-	@JsonProperty("affecting_moves")
-	private MoveStatAffectSets affectingMoves;
+  @JsonProperty("is_battle_only")
+  private boolean isBattleOnly;
 
-	@JsonProperty("affecting_natures")
-	private NatureStatAffectSets affectingNatures;
+  @JsonProperty("affecting_moves")
+  private MoveStatAffectSets affectingMoves;
 
-	private List<APIResource<Characteristic>> characteristics;
+  @JsonProperty("affecting_natures")
+  private NatureStatAffectSets affectingNatures;
 
-	@JsonProperty("move_damage_class")
-	private NamedAPIResource moveDamageClass;
+  private List<APIResource> characteristics;
 
-	private List<Name> names;
+  @JsonProperty("move_damage_class")
+  private NamedAPIResource moveDamageClass;
 
-	public int getId() {
-		return id;
-	}
+  private List<Name> names;
 
-	public void setId(int id) {
-		this.id = id;
-	}
+  public int getId() {
+    return this.id;
+  }
 
-	public String getName() {
-		return name;
-	}
+  public void setId(final int id) {
+    this.id = id;
+  }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+  public String getName() {
+    return this.name;
+  }
 
-	public int getGameIndex() {
-		return gameIndex;
-	}
+  public void setName(final String name) {
+    this.name = name;
+  }
 
-	public void setGameIndex(int gameIndex) {
-		this.gameIndex = gameIndex;
-	}
+  public int getGameIndex() {
+    return this.gameIndex;
+  }
 
-	public boolean isBattleOnly() {
-		return isBattleOnly;
-	}
+  public void setGameIndex(final int gameIndex) {
+    this.gameIndex = gameIndex;
+  }
 
-	public void setBattleOnly(boolean isBattleOnly) {
-		this.isBattleOnly = isBattleOnly;
-	}
+  public boolean isBattleOnly() {
+    return this.isBattleOnly;
+  }
 
-	public MoveStatAffectSets getAffectingMoves() {
-		return affectingMoves;
-	}
+  public void setBattleOnly(final boolean isBattleOnly) {
+    this.isBattleOnly = isBattleOnly;
+  }
 
-	public void setAffectingMoves(MoveStatAffectSets affectingMoves) {
-		this.affectingMoves = affectingMoves;
-	}
+  public MoveStatAffectSets getAffectingMoves() {
+    return this.affectingMoves;
+  }
 
-	public NatureStatAffectSets getAffectingNatures() {
-		return affectingNatures;
-	}
+  public void setAffectingMoves(final MoveStatAffectSets affectingMoves) {
+    this.affectingMoves = affectingMoves;
+  }
 
-	public void setAffectingNatures(NatureStatAffectSets affectingNatures) {
-		this.affectingNatures = affectingNatures;
-	}
+  public NatureStatAffectSets getAffectingNatures() {
+    return this.affectingNatures;
+  }
 
-	public List<APIResource<Characteristic>> getCharacteristics() {
-		return characteristics;
-	}
+  public void setAffectingNatures(final NatureStatAffectSets affectingNatures) {
+    this.affectingNatures = affectingNatures;
+  }
 
-	public void setCharacteristics(List<APIResource<Characteristic>> characteristics) {
-		this.characteristics = characteristics;
-	}
+  public List<APIResource> getCharacteristics() {
+    return this.characteristics;
+  }
 
-	public NamedAPIResource getMoveDamageClass() {
-		return moveDamageClass;
-	}
+  public void setCharacteristics(final List<APIResource> characteristics) {
+    this.characteristics = characteristics;
+  }
 
-	public void setMoveDamageClass(NamedAPIResource moveDamageClass) {
-		this.moveDamageClass = moveDamageClass;
-	}
+  public NamedAPIResource getMoveDamageClass() {
+    return this.moveDamageClass;
+  }
 
-	public List<Name> getNames() {
-		return names;
-	}
+  public void setMoveDamageClass(final NamedAPIResource moveDamageClass) {
+    this.moveDamageClass = moveDamageClass;
+  }
 
-	public void setNames(List<Name> names) {
-		this.names = names;
-	}
+  public List<Name> getNames() {
+    return this.names;
+  }
+
+  public void setNames(final List<Name> names) {
+    this.names = names;
+  }
 
 }

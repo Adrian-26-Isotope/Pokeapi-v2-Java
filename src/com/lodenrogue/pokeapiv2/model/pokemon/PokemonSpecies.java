@@ -3,6 +3,7 @@ package com.lodenrogue.pokeapiv2.model.pokemon;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.lodenrogue.pokeapiv2.model.APIResource;
 import com.lodenrogue.pokeapiv2.model.Description;
 import com.lodenrogue.pokeapiv2.model.Name;
 import com.lodenrogue.pokeapiv2.model.NamedAPIResource;
@@ -28,7 +29,7 @@ public class PokemonSpecies {
   private List<NamedAPIResource> eggGroups;
 
   @JsonProperty("evolution_chain")
-  private NamedAPIResource evolutionChain;
+  private APIResource evolutionChain;
 
   @JsonProperty("evolves_from_species")
   private NamedAPIResource evolvesFromSpecies;
@@ -98,7 +99,7 @@ public class PokemonSpecies {
     return this.eggGroups;
   }
 
-  public NamedAPIResource getEvolutionChain() {
+  public APIResource getEvolutionChain() {
     return this.evolutionChain;
   }
 
@@ -202,7 +203,7 @@ public class PokemonSpecies {
     this.eggGroups = eggGroups;
   }
 
-  public void setEvolutionChain(final NamedAPIResource evolutionChain) {
+  public void setEvolutionChain(final APIResource evolutionChain) {
     this.evolutionChain = evolutionChain;
   }
 
